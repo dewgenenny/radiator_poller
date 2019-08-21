@@ -32,7 +32,7 @@ while 1:
         client1 = paho.Client("control1")                           #create client object
         client1.username_pw_set(username=mqtt_username, password=mqtt_password)
         client1.on_publish = on_publish                          #assign function to callback
-        client1.connect(broker, port)                                 #establish connection
+        client1.connect(broker, int(port))                                 #establish connection
         now = datetime.datetime.now()
         temperature_to_set = int(target_temperature) + ((now.hour % 2)*0.5)
         ret = client1.publish(mqtt_topic + "/set/" + str(radiator) + "/1/SET_TEMPERATURE", temperature_to_set)                   #publish
