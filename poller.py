@@ -17,7 +17,7 @@ addresses_to_poll = [11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 target_temperature = os.environ['RADIATOR_TARGET']
 target_update_frequency = os.environ['RADIATOR_UPDATE_FREQUENCY']
 
-delay_between_polls = target_update_frequency / len(addresses_to_poll)
+delay_between_polls = int(target_update_frequency) / len(addresses_to_poll)
 
 
 def on_publish(client, userdata, result):             #create function for callback
@@ -34,7 +34,7 @@ while 1:
         client1.on_publish = on_publish                          #assign function to callback
         client1.connect(broker, port)                                 #establish connection
         now = datetime.datetime.now()
-        temperature_to_set = target_temperature + ((now.hour % 2)*0.5)
+        temperature_to_set = int(target_temperature) + ((now.hour % 2)*0.5)
         ret = client1.publish(mqtt_topic + "/set/" + str(radiator) + "/1/SET_TEMPERATURE", temperature_to_set)                   #publish
         print("Polling radiator" + mqtt_topic + "/set/" + str(radiator) + "/1/SET_TEMPERATURE polled")
         print(len(addresses_to_poll))
