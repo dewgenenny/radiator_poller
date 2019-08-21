@@ -4,13 +4,14 @@ import datetime
 import os
 
 
-broker = "192.168.178.20"
-port = 1883
+broker = os.environ['MQTT_SERVER']
+port = os.environ['MQTT_PORT']
+
 mqtt_username = os.environ['MQTT_USER']
 mqtt_password = os.environ['MQTT_PASS']
 
+mqtt_topic = "homegear/1234-5678-9abc"
 
-topic = "homegear/1234-5678-9abc"
 addresses_to_poll = [11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 
 target_temperature = os.environ['RADIATOR_TARGET']
@@ -34,8 +35,8 @@ while 1:
         client1.connect(broker, port)                                 #establish connection
         now = datetime.datetime.now()
         temperature_to_set = target_temperature + ((now.hour % 2)*0.5)
-        ret = client1.publish(topic+"/set/" + str(radiator) + "/1/SET_TEMPERATURE", temperature_to_set)                   #publish
-        print("Polling radiator" + topic+"/set/" + str(radiator) + "/1/SET_TEMPERATURE polled")
+        ret = client1.publish(mqtt_topic + "/set/" + str(radiator) + "/1/SET_TEMPERATURE", temperature_to_set)                   #publish
+        print("Polling radiator" + mqtt_topic + "/set/" + str(radiator) + "/1/SET_TEMPERATURE polled")
         print(len(addresses_to_poll))
         time.sleep(delay_between_polls)
 
