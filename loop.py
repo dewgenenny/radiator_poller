@@ -10,8 +10,7 @@ broker = os.environ['MQTT_SERVER']
 port = os.environ['MQTT_PORT']
 mqtt_username = os.environ['MQTT_USER']
 mqtt_password = os.environ['MQTT_PASS']
-mqtt_topic = "something/something"
-# mqtt_topic = os.environ['MQTT_TOPIC']
+mqtt_topic = os.environ['MQTT_TOPIC']
 target_update_frequency = os.environ['RADIATOR_UPDATE_FREQUENCY']
 
 
