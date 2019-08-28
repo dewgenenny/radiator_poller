@@ -13,10 +13,13 @@ RADIATOR_UPDATE_FREQUENCY=<update frequency in seconds>
 HOMEGEAR_URL=<homegear URL>
 
 MQTT_SERVER=<MQTT server hostname / IP>
+
 MQTT_PORT=<MQTT Port>
+
 MQTT_PASS=<MQTT Password>
 
 MQTT_USER=<MQTT Username>
+
 MQTT_TOPIC=<homegear topic eg homegear/1234-5678-9abc>
 
 Run the script using 'python loop.py'

@@ -3,8 +3,7 @@ import paho.mqtt.client as paho
 import time
 import datetime
 import os
-import json
-from requests import get
+
 
 
 broker = os.environ['MQTT_SERVER']
