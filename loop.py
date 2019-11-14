@@ -35,7 +35,7 @@ while 1:
         client1.on_publish = on_publish                          #assign function to callback
         client1.connect(broker, int(port))                                 #establish connection
         now = datetime.datetime.now()
-        temperature_to_set = int(20) + ((now.hour % 2)*0.5)
+        temperature_to_set = poller.get_temperature_to_set(radiator) + ((now.hour % 2)*0.5)
         ret = client1.publish(mqtt_topic + "/set/" + str(poller.get_homegear_id_from_ha_name(radiator)) + "/1/SET_TEMPERATURE", temperature_to_set)                   #publish
         print(" radiator " + mqtt_topic + "/set/" + str(poller.get_homegear_id_from_ha_name(radiator)) + "/1/SET_TEMPERATURE with temperature set at: "+str(temperature_to_set))
         time.sleep(delay_between_polls)
