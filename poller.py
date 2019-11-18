@@ -61,6 +61,7 @@ def get_homegear_id_from_ha_id(ha_id):
     for i in range(len(homegear_json["value"])):
         if homegear_json["value"][i]["ADDRESS"] == ha_id:
             print ("HA : " + ha_id + " HG : " + str(homegear_json["value"][i]["ID"]))
+# comment
             return homegear_json["value"][i]["ID"]
 
 
